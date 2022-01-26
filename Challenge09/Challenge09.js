@@ -31,7 +31,7 @@ const arrInc = (arr) => {
 // 
 // ------------------------
 const roundDecimals = (arr) => {
-    arr.map(num => Math.round(num))
+      // write your code here
 }
 
 // 3) ---------------------
@@ -100,12 +100,7 @@ const roundDecimals = (arr) => {
 // ------------------------
 const employeesBonus = (arr) => {
     
-        arr.map(employee => {
-          let newEmployee = { ...employee }
-          let oldSalary = parseInt(newEmployee["salary"].slice(0, -1));
-          newEmployee["salary"] = newEmployee["workHours"] > 8 ? `${oldSalary + 100}$` : `${oldSalary + 50}$`;
-          return newEmployee
-        })
+        // write your code here
       }
 
 // 4) ---------------------
