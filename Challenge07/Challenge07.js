@@ -172,7 +172,7 @@ const applicationsStatics = (arr) => {
         }
     }
     result.totalApplicants = arr.length
-    return result;  
+    return result;  // write your code here
 };
 // 4) ---------------------
 //
@@ -312,7 +312,8 @@ const classesAvg = (data) => {
                
         }
         
-    }
-};
+    }};
+     
+
 
 module.exports = { objLat, cvFormatter, applicationsStatics, classesAvg };
