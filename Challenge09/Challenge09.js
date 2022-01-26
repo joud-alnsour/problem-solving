@@ -16,8 +16,13 @@
 // ------------------------
 
 const arrInc = (arr) => {
-    let result = [];
-    arr.forEach(num => result.push(num + 10));
+  let  result = []
+    let j = 0
+    arr.forEach(element => {
+       result[j] = element+10
+       j++
+    });
+   
     return result;
 }
 
@@ -31,7 +36,7 @@ const arrInc = (arr) => {
 // 
 // ------------------------
 const roundDecimals = (arr) => {
-      // write your code here
+  // write your code here
 }
 
 // 3) ---------------------
@@ -118,14 +123,14 @@ const employeesBonus = (arr) => {
 // ==> 200
 // ------------------------
 const mostExpensive = (budget, mouseArray, keyBoardArray) => {
-    let i = 0;
+    let j = 0;
     mouseArray.forEach(mouse => {
       keyBoardArray.forEach(keyBoard => {
-        ((mouse + keyBoard) > i && (mouse + keyBoard) <= budget) ? i = mouse + keyBoard : "";
+        ((mouse + keyBoard) > j && (mouse + keyBoard) <= budget) ? j = mouse + keyBoard : "";
       });
     });
   
-    return i;
+    return j;
 }
 
 module.exports = { arrInc, roundDecimals, employeesBonus, mostExpensive };
