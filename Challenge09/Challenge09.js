@@ -16,8 +16,13 @@
 // ------------------------
 
 const arrInc = (arr) => {
-    let result = [];
-    arr.forEach(num => result.push(num + 10));
+  let  result = []
+    let c = 0
+    arr.forEach(element => {
+       result[c] = element+10
+       c++
+    });
+   
     return result;
 }
 
@@ -31,7 +36,7 @@ const arrInc = (arr) => {
 // 
 // ------------------------
 const roundDecimals = (arr) => {
-      // write your code here
+  // write your code here
 }
 
 // 3) ---------------------
