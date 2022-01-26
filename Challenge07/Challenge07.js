@@ -19,7 +19,7 @@
 // ------------------------
 
 const objLat = (obj) => {
-    return('my name is'+firstName+lastName+'I am'+age+'YO', 'and I love'+hobby+'.')
+    return `my name is ${obj.firstName.charAt(0).toUpperCase() + obj.firstName.substring(1)} ${obj.lastName.charAt(0).toUpperCase() + obj.lastName.substring(1)} I am ${obj.age} YO, and I love ${obj.hobby}.`
 };
 
 // 2) ---------------------
@@ -82,9 +82,34 @@ const objLat = (obj) => {
 //  2- If one of the names is null dont add it to the full name
 
 // ------------------------
+
 const cvFormatter = (arr) => {
-    
-    // write your code here
+    let candidates = []
+    function Object(fullName, tech) {
+        this.fullName = fullName;
+        this.tech = tech;
+    }
+
+    for (let index = 0; index < arr.length; index++) {
+        if (arr[index].yearsOfExperience > 1) {
+            let name = ''
+            if(arr[index].firstName !== null ){
+                name = arr[index].firstName
+                if(arr[index].lastName !== null){
+                    name += ' ' + arr[index].lastName
+                }
+            }  
+            else if (arr[index].lastName!== null){
+                name = arr[index].lastName
+            }
+          
+            candidates.push(new Object(name, arr[index].tech));
+        }
+
+
+
+    }
+    return candidates;
 };
 
 // 3) ---------------------
@@ -107,10 +132,48 @@ const cvFormatter = (arr) => {
 //  1- rejectedApplicants are applications that has both the names empty or null and whoever have less than one year of Experience
 
 // ------------------------
-const applicationsStatics = (arr) => {
-    // write your code here
-};
 
+const applicationsStatics = (arr) => {
+
+    let result = {
+        python_Devs: 0,
+        javaScript_Devs: 0,
+        dotNet_Devs: 0,
+        java_Devs: 0,
+        totalApplicants: 0,
+        rejectedApplicants: 0,
+    }
+    for (let index = 0; index < arr.length; index++) {
+        if ((arr[index].firstName === '' || arr[index].firstName === null)
+            || (arr[index].lastName === '' || arr[index].lastName === null)) {
+                result.rejectedApplicants++
+                continue
+        }
+        if (arr[index].yearsOfExperience < 1) {
+            result.rejectedApplicants++
+            continue
+        }
+        switch (arr[index].tech) {
+            case "JS":
+                result.javaScript_Devs++
+                break;
+
+            case ".Net":
+                result.dotNet_Devs++
+                break;
+
+            case "Python":
+                result.python_Devs++
+                break;
+
+            case "Java":
+                result.java_Devs++
+
+        }
+    }
+    result.totalApplicants = arr.length
+    return result;  
+};
 // 4) ---------------------
 //
 //  A Certain School principal wants to calculate the average score of each class in each grade in the school
@@ -233,7 +296,23 @@ let data = {
 //  2- You need to round the average to the nearest lower number 
 
 const classesAvg = (data) => {
-    // write your code here
+    let sum = 0;
+    for (let g = 0; g < data.grades.length; g++) {
+     
+        for (let c = 0; c <data.grades[g].numberOFClasses; c++) {
+            for (let index = 0; index < data.grades[g].classes[c].classScores.length; index++) {
+                
+                
+                sum += data.grades[g].classes[c].classScores[index]
+                
+                
+            }
+           let avg = (sum / data.grades[g].classes[c].classScores.length)
+           
+               
+        }
+        
+    }
 };
 
 module.exports = { objLat, cvFormatter, applicationsStatics, classesAvg };
