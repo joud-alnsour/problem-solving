@@ -84,8 +84,38 @@ const objLat = (obj) => {
 // ------------------------
 const cvFormatter = (arr) => {
     
-    // write your code here
-};
+    let copy  = [];
+    let j = 0;
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i].yearsOfExperience > 1) {
+        copy [j] = arr[i];
+        j++;
+      }
+    }
+  r
+    
+  
+    let final  = function (copy ) {
+      return copy .map(function (aa) {
+        let newObj = {};
+        if (aa.firstName == null) {
+          newObj['fullName'] = aa.lastName;
+          newObj['tech'] = aa.tech;
+        } else if (aa.lastName == null) {
+          newObj['fullName'] = aa.firstName;
+          newObj['tech'] = aa.tech;
+        } else {
+          newObj['fullName'] = `${aa.firstName} ${aa.lastName}`;
+          newObj['tech'] = aa.tech;
+        }
+  
+        return newObj;
+      });
+    };
+    let finallArr  = final (copy );
+  
+    return finallArr;
+  };
 
 // 3) ---------------------
 //
@@ -108,7 +138,7 @@ const cvFormatter = (arr) => {
 
 // ------------------------
 const applicationsStatics = (arr) => {
-    // write your code here
+            // write your code here
 };
 
 // 4) ---------------------
@@ -233,7 +263,20 @@ let data = {
 //  2- You need to round the average to the nearest lower number 
 
 const classesAvg = (data) => {
-    // write your code here
-};
-
-module.exports = { objLat, cvFormatter, applicationsStatics, classesAvg };
+    let sum = 0;
+  
+    for (let i = 0; i < data.grades.length; i++) {
+      for (let j = 0; j < data.grades[i].numberOFClasses; j++) {
+        sum = data.grades[i].classes[j].classScores.reduce(function (a, b) {
+          return a + b;
+        }, 0);
+  
+        data.grades[i].classes[j].avg = Math.floor(sum / data.grades[i].classes[j].classScores.length);
+      }
+      sum = 0;
+    }
+  
+    return data;
+  };
+  
+  module.exports = { objLat, cvFormatter, applicationsStatics, classesAvg };
