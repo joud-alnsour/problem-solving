@@ -83,39 +83,36 @@ const objLat = (obj) => {
 
 // ------------------------
 const cvFormatter = (arr) => {
-    
-    let copy  = [];
-    let j = 0;
+
+    let array2 = [];
+    let g = 0;
     for (let i = 0; i < arr.length; i++) {
-      if (arr[i].yearsOfExperience > 1) {
-        copy [j] = arr[i];
-        j++;
-      }
-    }
-  r
-    
-  
-    let final  = function (copy ) {
-      return copy .map(function (aa) {
-        let newObj = {};
-        if (aa.firstName == null) {
-          newObj['fullName'] = aa.lastName;
-          newObj['tech'] = aa.tech;
-        } else if (aa.lastName == null) {
-          newObj['fullName'] = aa.firstName;
-          newObj['tech'] = aa.tech;
-        } else {
-          newObj['fullName'] = `${aa.firstName} ${aa.lastName}`;
-          newObj['tech'] = aa.tech;
+        if (arr[i].yearsOfExperience > 1) {
+            array2[g] = arr[i];
+            g++;
         }
-  
-        return newObj;
-      });
+    }
+    let finalArray = function (array2) {
+        return array2.map(function (modify) {
+            let result = {};
+            if (modify.firstName == null) {
+                result['fullName'] = modify.lastName;
+                result['tech'] = modify.tech;
+            } else if (modify.lastName == null) {
+                result['fullName'] = modify.firstName;
+                result['tech'] = modify.tech;
+            } else {
+                result['fullName'] = `${modify.firstName} ${modify.lastName}`;
+                result['tech'] = modify.tech;
+            }
+
+            return result;
+        });
     };
-    let finallArr  = final (copy );
-  
-    return finallArr;
-  };
+    ;
+
+    return finalArray(array2)
+};
 
 // 3) ---------------------
 //
@@ -138,7 +135,49 @@ const cvFormatter = (arr) => {
 
 // ------------------------
 const applicationsStatics = (arr) => {
-            // write your code here
+ 
+    let result = {
+        python_Devs: 0,
+        javaScript_Devs: 0,
+        dotNet_Devs: 0,
+        java_Devs: 0,
+        totalApplicants: 0,
+        rejectedApplicants: 0,
+    }
+    for (let index = 0; index < arr.length; index++) {
+        if  ((arr[index].firstName == '' || arr[index].firstName == null)
+        && (arr[index].lastName == '' || arr[index].lastName == null)){
+            result.rejectedApplicants++
+            continue}
+
+  
+            if (arr[index].yearsOfExperience <= 1) {
+                result.rejectedApplicants++
+                continue
+            }
+        }
+    for (let i = 0; i < arr.length; i++) {
+        switch (arr[i].tech) {
+            case "JS":
+                result.javaScript_Devs++
+                break;
+
+            case ".Net":
+                result.dotNet_Devs++
+                break;
+
+            case "Python":
+                result.python_Devs++
+                break;
+
+            case "Java":
+                result.java_Devs++
+
+        }
+    }
+
+    result.totalApplicants = arr.length
+    return result;   
 };
 
 // 4) ---------------------
