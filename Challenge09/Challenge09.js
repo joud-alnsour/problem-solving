@@ -35,9 +35,20 @@ const arrInc = (arr) => {
 //  [5.4, 5.5 ,6.7, 6.8] ==> [5, 6, 7, 7]
 // 
 // ------------------------
+let x = [5.4, 5.5 ,6.7, 6.8]
 const roundDecimals = (arr) => {
-  // write your code here
+    let result = [] 
+    let j = 0
+     arr.forEach(element => {
+        result[j] = Math.round(element)
+        j++
+     });
+
+
+    return result
+
 }
+roundDecimals(x)
 
 // 3) ---------------------
 // 
@@ -104,9 +115,17 @@ const roundDecimals = (arr) => {
 
 // ------------------------
 const employeesBonus = (arr) => {
-    
-        // write your code here
+  arr.forEach(element => {
+      if(element.workHours > 8){
+          
+          element.salary = `${parseInt(element.salary) + 100}$`
       }
+      else{
+          element.salary = `${parseInt(element.salary) + 50}$`
+      }
+  });
+  return arr;
+}
 
 // 4) ---------------------
 // 
