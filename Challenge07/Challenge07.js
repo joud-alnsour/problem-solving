@@ -85,11 +85,11 @@ const objLat = (obj) => {
 const cvFormatter = (arr) => {
 
     let array2 = [];
-    let g = 0;
+    let j = 0;
     for (let i = 0; i < arr.length; i++) {
         if (arr[i].yearsOfExperience > 1) {
-            array2[g] = arr[i];
-            g++;
+            array2[j] = arr[i];
+            j++;
         }
     }
     let finalArray = function (array2) {
